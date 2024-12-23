@@ -3,3 +3,4 @@ Django
 psycopg2
 python-decouple
 gunicorn
+whitenoise

@@ -26,6 +26,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -91,6 +92,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 # # Where static files are colected for production
 STATIC_ROOT = Path.joinpath(BASE_DIR, "staticfiles")
+print(STATIC_ROOT)
 
 # # Where static files are colected for development
 STATICFILES_DIRS = [
