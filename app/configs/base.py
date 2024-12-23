@@ -1,9 +1,8 @@
 from pathlib import Path
 from decouple import config
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 TEMPLATES_DIR = Path.joinpath(BASE_DIR, "templates")
-
 DEFAULT_APP = [
     "django.contrib.admin",
     "django.contrib.auth",

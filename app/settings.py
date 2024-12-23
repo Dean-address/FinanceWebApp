@@ -3,7 +3,6 @@ from decouple import config
 from .configs import dev, prod
 
 env = config("DEBUG", cast=bool)
-
 if env == False:
     from .configs.prod import *
 else:
