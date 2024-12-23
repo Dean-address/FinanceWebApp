@@ -2,3 +2,4 @@ dj-database-url
 Django
 psycopg2
 python-decouple
+gunicorn
