@@ -4,13 +4,13 @@ from .views import (
     LoginView,
     UsernameValidation,
     EmailValidation,
+    Verification,
 )
 from django.views.decorators.csrf import csrf_exempt
 
 app_name = "authentication"
 urlpatterns = [
     path("register/", RegistrationView.as_view(), name="register"),
-    path("login/", LoginView.as_view(), name="login"),
     path(
         "validate_username/",
         csrf_exempt(UsernameValidation.as_view()),
@@ -21,4 +21,6 @@ urlpatterns = [
         csrf_exempt(EmailValidation.as_view()),
         name="validate_email",
     ),
+    path("activate/<uidb64>/<token>", Verification.as_view(), name="activate"),
+    path("login/", LoginView.as_view(), name="login"),
 ]
