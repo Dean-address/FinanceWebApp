@@ -2,6 +2,7 @@ from django.urls import path
 from .views import (
     RegistrationView,
     LoginView,
+    Logout,
     UsernameValidation,
     EmailValidation,
     Verification,
@@ -23,4 +24,5 @@ urlpatterns = [
     ),
     path("activate/<uidb64>/<token>", Verification.as_view(), name="activate"),
     path("login/", LoginView.as_view(), name="login"),
+    path("logout/", Logout.as_view(), name="logout"),
 ]

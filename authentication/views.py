@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.sites.shortcuts import get_current_site
-
+from django.contrib.auth import authenticate, login, logout
 from decouple import config
 import json
 from validate_email import validate_email
@@ -91,6 +91,37 @@ class Verification(View):
 class LoginView(View):
     def get(self, request):
         return render(request, "authentication/login.html")
+
+    def post(self, request):
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        if username and password:
+            user = authenticate(username=username, password=password)
+
+            if user:
+                if user.is_active:
+                    login(request, user)
+                    messages.success(
+                        request, f"Welcome, {user.username}, You are now logged in"
+                    )
+                    return redirect("expenses:index")
+                else:
+                    messages.error(
+                        request, "Account not active,, please check your email"
+                    )
+                    return render(request, "authentication/login.html")
+            messages.error(request, "Invalid Credentials, Try again")
+            return render(request, "authentication/login.html")
+        messages.error(request, "Fill all fields")
+        return render(request, "authentication/login.html")
+
+
+class Logout(View):
+    def post(self, request):
+        logout(request)
+        messages.success(request, "You are been logged out")
+        return redirect("authentication:login")
 
 
 class UsernameValidation(View):
