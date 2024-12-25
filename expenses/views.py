@@ -69,6 +69,8 @@ def edit_expenses(request, id):
         if not description:
             messages.error(request, "Description is required")
             return render(request, "expenses/edit_expenses.html", context)
+        if not date:
+            date = expense.date
 
         expense.owner = request.user
         expense.amount = amount
