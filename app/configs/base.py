@@ -17,6 +17,7 @@ DEFAULT_APP = [
 LOCAL_APP = [
     "expenses",
     "authentication",
+    "userpreferences",
 ]
 
 THIRD_PARTY_APP = []

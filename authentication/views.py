@@ -105,7 +105,7 @@ class LoginView(View):
                     messages.success(
                         request, f"Welcome, {user.username}, You are now logged in"
                     )
-                    return redirect("expenses:index")
+                    return redirect("expenses:expenses")
                 else:
                     messages.error(
                         request, "Account not active,, please check your email"
