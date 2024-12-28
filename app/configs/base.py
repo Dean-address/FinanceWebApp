@@ -18,6 +18,7 @@ LOCAL_APP = [
     "expenses",
     "authentication",
     "userpreferences",
+    "userincome",
 ]
 
 THIRD_PARTY_APP = []
